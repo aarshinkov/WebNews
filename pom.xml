@@ -4,7 +4,7 @@
 
   <groupId>com.atanas.web</groupId>
   <artifactId>web-news</artifactId>
-  <version>1.0.3</version>
+  <version>1.0.4</version>
   <packaging>war</packaging>
 
   <name>WebNews</name>
@@ -45,6 +45,22 @@
       <groupId>org.springframework</groupId>
       <artifactId>spring-context-support</artifactId>
       <version>5.2.0.RELEASE</version>
+    </dependency>
+	
+	<dependency>
+      <groupId>org.thymeleaf</groupId>
+      <artifactId>thymeleaf</artifactId>
+      <version>3.0.11.RELEASE</version>
+    </dependency>
+    <dependency>
+      <groupId>org.thymeleaf</groupId>
+      <artifactId>thymeleaf-spring5</artifactId>
+      <version>3.0.11.RELEASE</version>
+    </dependency>
+    <dependency>
+      <groupId>nz.net.ultraq.thymeleaf</groupId>
+      <artifactId>thymeleaf-layout-dialect</artifactId>
+      <version>2.4.1</version>
     </dependency>
   
     <dependency>
