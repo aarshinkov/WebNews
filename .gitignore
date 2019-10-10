@@ -1,0 +1,10 @@
+**/target/**
+**/.idea/**
+**.iml
+**.project
+**.classpath
+**/.settings/**
+**/bin/**
+**/Archive/**
+**nb-configuration.xml
+/target/
