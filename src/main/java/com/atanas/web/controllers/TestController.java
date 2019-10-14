@@ -37,14 +37,29 @@ public class TestController
   {
     int min = 0;
     int max = 100;
-    
+
     int number = (int) (Math.random() * ((max - min) + 1)) + min;
-    
+
     String personName = "Jane";
-    
+
     model.addAttribute("randomNumber", number);
     model.addAttribute("name", personName);
-    
+
     return "test/conditionals";
+  }
+
+  @GetMapping(value = "/loops")
+  public String loops(Model model)
+  {
+    List<String> names = new ArrayList<>();
+    names.add("John");
+    names.add("Jane");
+    names.add("Stefany");
+    names.add("Atanas");
+    names.add("Vicky");
+    
+    model.addAttribute("namesList", names);
+
+    return "test/loops";
   }
 }
