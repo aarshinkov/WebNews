@@ -25,10 +25,26 @@ public class TestController
   {
     String greeting = "Hello, <hr> Atanas";
     Date date = new Date();
-    
+
     model.addAttribute("greeting", greeting);
     model.addAttribute("now", date);
-    
+
     return "test/dynamic";
+  }
+
+  @GetMapping(value = "/conditionals")
+  public String conditionals(Model model)
+  {
+    int min = 0;
+    int max = 100;
+    
+    int number = (int) (Math.random() * ((max - min) + 1)) + min;
+    
+    String personName = "Jane";
+    
+    model.addAttribute("randomNumber", number);
+    model.addAttribute("name", personName);
+    
+    return "test/conditionals";
   }
 }

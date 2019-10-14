@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Conditionals</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+  <body>
+    <div>This is the conditionals page</div>
+    
+    <div th:text="${randomNumber}"></div>
+    
+    <div th:if="${randomNumber % 2 eq 0}">Even</div>
+    <div th:if="${randomNumber % 2 eq 1}">Odd</div>
+    
+    <hr/>
+    
+    <div th:if="${name eq 'John'}">Hello, John</div>
+    <div th:if="${name ne 'John'}">Hello, anyone</div>
+  </body>
+</html>
