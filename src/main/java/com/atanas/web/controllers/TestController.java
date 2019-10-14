@@ -57,9 +57,18 @@ public class TestController
     names.add("Stefany");
     names.add("Atanas");
     names.add("Vicky");
-    
+
     model.addAttribute("namesList", names);
 
     return "test/loops";
+  }
+
+  @GetMapping(value = "/greetMe")
+  public String greetMe(@RequestParam(value = "firstName", defaultValue = "Jane") String first, @RequestParam(value = "lastName", required = false) String last, Model model)
+  {
+    model.addAttribute("firstName", first);
+    model.addAttribute("lastName", last);
+    
+    return "test/greetMe";
   }
 }
