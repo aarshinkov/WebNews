@@ -1,5 +1,6 @@
 package com.atanas.web.controllers;
 
+import java.util.*;
 import org.springframework.stereotype.*;
 import org.springframework.ui.*;
 import org.springframework.web.bind.annotation.*;
@@ -17,5 +18,17 @@ public class TestController
     model.addAttribute("number", a);
 
     return "test/testModel";
+  }
+
+  @GetMapping(value = "/dynamicText")
+  public String dynamicText(Model model)
+  {
+    String greeting = "Hello, <hr> Atanas";
+    Date date = new Date();
+    
+    model.addAttribute("greeting", greeting);
+    model.addAttribute("now", date);
+    
+    return "test/dynamic";
   }
 }
