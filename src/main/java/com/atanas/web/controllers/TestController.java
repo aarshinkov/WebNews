@@ -68,6 +68,16 @@ public class TestController
   {
     model.addAttribute("firstName", first);
     model.addAttribute("lastName", last);
+
+    return "test/greetMe";
+  }
+
+  // WebNews/greet/John/Doe
+  @GetMapping(value = "/greet/{firstName}/{lastName}")
+  public String greet(@PathVariable(name = "lastName") String last, @PathVariable(name = "firstName") String first, Model model)
+  {
+    model.addAttribute("firstName", first);
+    model.addAttribute("lastName", last);
     
     return "test/greetMe";
   }
