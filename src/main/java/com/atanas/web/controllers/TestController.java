@@ -78,7 +78,23 @@ public class TestController
   {
     model.addAttribute("firstName", first);
     model.addAttribute("lastName", last);
-    
+
     return "test/greetMe";
+  }
+
+  @GetMapping(value = "/test/dummyRegister")
+  public String prepareDummyRegister()
+  {
+    return "test/dummyRegister";
+  }
+
+  @GetMapping(value = "/test/register")
+  public String dummyRegister(@RequestParam(value = "email") String email,
+          @RequestParam(value = "password") String password, Model model)
+  {
+    model.addAttribute("email", email);
+    model.addAttribute("password", password);
+    
+    return "test/registered";
   }
 }
