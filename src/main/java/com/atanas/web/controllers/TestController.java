@@ -88,7 +88,7 @@ public class TestController
     return "test/dummyRegister";
   }
 
-  @GetMapping(value = "/test/register")
+  @PostMapping(value = "/test/register")
   public String dummyRegister(@RequestParam(value = "email") String email,
           @RequestParam(value = "password") String password, Model model)
   {
