@@ -5,7 +5,7 @@ import javax.validation.constraints.*;
 public class Person
 {
   @NotNull
-  @Size(min = 2, max = 20)
+  @Size(min = 2, max = 20, message = "Wrong size. Size must be between {min} and {max}")
   private String username;
   
   @NotNull
@@ -16,7 +16,7 @@ public class Person
   @Size(min = 2, max = 20)
   private String lastName;
   
-  @NotNull
+  @NotNull(message = "This field MUST NOT be null!!")
   @Min(0)
   @Max(120)
   private Integer age;

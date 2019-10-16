@@ -11,12 +11,16 @@
 
     <form th:action="@{/test/registerPerson}" th:object="${person}" method="post">
       <input type="text" th:field="*{username}" placeholder="Username"/>
+      <span style="color: red;" th:errors="*{username}"></span>
       <br/>
       <input type="text" th:field="*{firstName}" placeholder="First name"/>
+      <span style="color: red;" th:errors="*{firstName}"></span>
       <br/>
       <input type="text" th:field="*{lastName}" placeholder="Last name"/>
+      <span style="color: red;" th:errors="*{lastName}"></span>
       <br/>
       <input type="number" th:field="*{age}" placeholder="Age"/>
+      <span style="color: red;" th:errors="*{age}"></span>
       <br/>
       <button type="submit">Submit</button>
     </form>
