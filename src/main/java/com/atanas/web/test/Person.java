@@ -1,10 +1,24 @@
 package com.atanas.web.test;
 
+import javax.validation.constraints.*;
+
 public class Person
 {
+  @NotNull
+  @Size(min = 2, max = 20)
   private String username;
+  
+  @NotNull
+  @Size(min = 2, max = 30)
   private String firstName;
+  
+  @NotNull
+  @Size(min = 2, max = 20)
   private String lastName;
+  
+  @NotNull
+  @Min(0)
+  @Max(120)
   private Integer age;
 
   public String getUsername()
