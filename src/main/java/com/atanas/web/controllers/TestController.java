@@ -90,10 +90,14 @@ public class TestController
 
   @PostMapping(value = "/test/register")
   public String dummyRegister(@RequestParam(value = "email") String email,
-          @RequestParam(value = "password") String password, Model model)
+          @RequestParam(value = "password") String password,
+          @RequestParam(value = "firstName") String firstName,
+          @RequestParam(value = "age") Integer age, Model model)
   {
     model.addAttribute("email", email);
     model.addAttribute("password", password);
+    model.addAttribute("firstName", firstName);
+    model.addAttribute("age", age);
     
     return "test/registered";
   }
