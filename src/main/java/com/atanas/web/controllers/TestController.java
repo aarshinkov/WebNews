@@ -1,8 +1,11 @@
 package com.atanas.web.controllers;
 
+import com.atanas.web.test.*;
 import java.util.*;
+import javax.validation.*;
 import org.springframework.stereotype.*;
 import org.springframework.ui.*;
+import org.springframework.validation.*;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -98,7 +101,31 @@ public class TestController
     model.addAttribute("password", password);
     model.addAttribute("firstName", firstName);
     model.addAttribute("age", age);
-    
+
     return "test/registered";
+  }
+
+  @GetMapping(value = "/test/registerPerson")
+  public String prepareRegisterPerson(Model model)
+  {
+    model.addAttribute("person", new Person());
+
+    return "test/personRegister";
+  }
+
+  @PostMapping(value = "/test/registerPerson")
+  public String registerPerson(@Valid Person person, BindingResult bindingResult, Model model)
+  {
+    if (bindingResult.hasErrors()) {
+      System.out.println("bindingResult: " + bindingResult.getAllErrors());
+      return "test/personRegister";
+    }
+    
+    System.out.println("Username: " + person.getUsername());
+    System.out.println("First name: " + person.getFirstName());
+    System.out.println("Last name: " + person.getLastName());
+    System.out.println("Age: " + person.getAge());
+    
+    return "redirect:/";
   }
 }

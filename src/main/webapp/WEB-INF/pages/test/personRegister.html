@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Person register</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+  <body>
+    <div>Registering a person</div>
+
+    <form th:action="@{/test/registerPerson}" th:object="${person}" method="post">
+      <input type="text" th:field="*{username}" placeholder="Username"/>
+      <br/>
+      <input type="text" th:field="*{firstName}" placeholder="First name"/>
+      <br/>
+      <input type="text" th:field="*{lastName}" placeholder="Last name"/>
+      <br/>
+      <input type="number" th:field="*{age}" placeholder="Age"/>
+      <br/>
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
