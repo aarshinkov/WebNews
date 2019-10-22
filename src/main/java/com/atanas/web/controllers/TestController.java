@@ -1,8 +1,12 @@
 package com.atanas.web.controllers;
 
+import com.atanas.web.entities.*;
+import com.atanas.web.repositories.*;
 import com.atanas.web.test.*;
 import java.util.*;
 import javax.validation.*;
+import org.springframework.beans.factory.annotation.*;
+import org.springframework.http.*;
 import org.springframework.stereotype.*;
 import org.springframework.ui.*;
 import org.springframework.validation.*;
@@ -11,6 +15,9 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class TestController
 {
+  @Autowired
+  private UsersRepository usersRepository;
+
   @GetMapping(value = "/testModel")
   public String testModel(Model model)
   {
@@ -116,16 +123,24 @@ public class TestController
   @PostMapping(value = "/test/registerPerson")
   public String registerPerson(@Valid Person person, BindingResult bindingResult, Model model)
   {
-    if (bindingResult.hasErrors()) {
+    if (bindingResult.hasErrors())
+    {
       System.out.println("bindingResult: " + bindingResult.getAllErrors());
       return "test/personRegister";
     }
-    
+
     System.out.println("Username: " + person.getUsername());
     System.out.println("First name: " + person.getFirstName());
     System.out.println("Last name: " + person.getLastName());
     System.out.println("Age: " + person.getAge());
-    
+
     return "redirect:/";
+  }
+
+  @GetMapping(value = "/test/getUser", produces = MediaType.APPLICATION_JSON_VALUE)
+  @ResponseBody
+  public UserEntity getUser(@RequestParam("userId") Integer userId)
+  {
+    return usersRepository.findByUserId(userId);
   }
 }
