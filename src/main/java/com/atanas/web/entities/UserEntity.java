@@ -2,6 +2,7 @@ package com.atanas.web.entities;
 
 import java.io.*;
 import java.sql.*;
+import java.util.*;
 import javax.persistence.*;
 
 @Entity
@@ -30,6 +31,10 @@ public class UserEntity implements Serializable
   
   @Column(name = "created_on")
   private Timestamp createdOn;
+  
+  @ManyToMany(fetch = FetchType.EAGER)
+  @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "rolename"))
+  private List<RoleEntity> roles = new ArrayList<>();
 
   public Integer getUserId()
   {
@@ -99,5 +104,15 @@ public class UserEntity implements Serializable
   public void setCreatedOn(Timestamp createdOn)
   {
     this.createdOn = createdOn;
-  }  
+  }
+
+  public List<RoleEntity> getRoles()
+  {
+    return roles;
+  }
+
+  public void setRoles(List<RoleEntity> roles)
+  {
+    this.roles = roles;
+  }
 }
