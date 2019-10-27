@@ -143,4 +143,10 @@ public class TestController
   {
     return usersRepository.findByUserId(userId);
   }
+
+  @GetMapping(value = "/templateTest")
+  public String templateTest()
+  {
+    return "test/templateTest";
+  }
 }
