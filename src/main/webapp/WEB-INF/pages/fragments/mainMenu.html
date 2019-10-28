@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org">
   <body>
     <div id="mainMenu" th:remove="tag">
-      <nav class="navbar navbar-dark bg-primary navbar-expand-md">
+      <nav class="navbar navbar-dark bg-primary navbar-expand-md" style="margin-bottom: 20px;">
         <a class="navbar-brand" href="#">WebNews</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -23,6 +23,9 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/signup}" href="#">Signup</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Logout</a>
