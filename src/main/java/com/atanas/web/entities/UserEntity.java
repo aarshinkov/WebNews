@@ -4,6 +4,7 @@ import java.io.*;
 import java.sql.*;
 import java.util.*;
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 @Entity
 @Table(name = "users")
@@ -14,18 +15,28 @@ public class UserEntity implements Serializable
   @Column(name = "user_id")
   private Integer userId;
   
+  @NotNull
+  @Size(max = 200)
   @Column(name = "email")
   private String email;
   
+  @NotNull
+  @Size(max = 60)
   @Column(name = "username")
   private String username;
   
+  @NotNull
+  @Size(max = 100)
   @Column(name = "password")
   private String password;
   
+  @NotNull
+  @Size(max = 80)
   @Column(name = "first_name")
   private String firstName;
   
+  @NotNull
+  @Size(max = 80)
   @Column(name = "last_name")
   private String lastName;
   

@@ -1,8 +1,10 @@
 package com.atanas.web.controllers;
 
 import com.atanas.web.entities.*;
+import javax.validation.*;
 import org.springframework.stereotype.*;
 import org.springframework.ui.*;
+import org.springframework.validation.*;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -18,8 +20,14 @@ public class LoginController
   }
 
   @PostMapping(value = "/signup")
-  public String signup(UserEntity user, Model model)
+  public String signup(@ModelAttribute("user") @Valid UserEntity user, BindingResult bindingResult,
+          Model model)
   {
+    if (bindingResult.hasErrors())
+    {
+      return "login/signup";
+    }
+
     System.out.println(user.getEmail());
     System.out.println(user.getUsername());
     System.out.println(user.getPassword());
