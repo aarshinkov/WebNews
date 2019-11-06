@@ -26,6 +26,7 @@ public class LoginController
   {
     if (bindingResult.hasErrors())
     {
+      model.addAttribute("globalMenu", "signup");
       return "login/signup";
     }
 

@@ -15,27 +15,27 @@ public class UserEntity implements Serializable
   @Column(name = "user_id")
   private Integer userId;
   
-  @NotNull
+  @NotEmpty(message = "Email must not be empty")
   @Size(max = 200)
   @Column(name = "email")
   private String email;
   
-  @NotNull
-  @Size(max = 60)
+  @NotEmpty(message = "Username must not be empty")
+  @Size(max = 60, message = "Username must be between {min} and {max}")
   @Column(name = "username")
   private String username;
   
-  @NotNull
+  @NotEmpty(message = "Password must not be empty")
   @Size(max = 100)
   @Column(name = "password")
   private String password;
   
-  @NotNull
+  @NotEmpty(message = "First name must not be empty")
   @Size(max = 80)
   @Column(name = "first_name")
   private String firstName;
   
-  @NotNull
+  @NotEmpty(message = "Last name must not be empty")
   @Size(max = 80)
   @Column(name = "last_name")
   private String lastName;

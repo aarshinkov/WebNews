@@ -13,27 +13,37 @@
         <div class="form-group">
           <label for="emailInput">Email</label>
           <input type="email" class="form-control" id="emailInput"
+                 th:classappend="${#fields.hasErrors('email')} ? 'is-invalid'"
                  th:field="*{email}" placeholder="Enter email"/>
+          <div class="invalid-feedback" th:errors="*{email}">Error</div>
         </div>
         <div class="form-group">
           <label for="userInput">Username</label>
           <input type="text" class="form-control" id="userInput"
+                 th:classappend="${#fields.hasErrors('username')} ? 'is-invalid'"
                  th:field="*{username}" placeholder="Enter username"/>
+          <div class="invalid-feedback" th:errors="*{username}">Error</div>
         </div>
         <div class="form-group">
           <label for="passwordInput">Password</label>
           <input type="password" class="form-control" id="passwordInput"
+                 th:classappend="${#fields.hasErrors('password')} ? 'is-invalid'"
                  th:field="*{password}" placeholder="Enter password"/>
+          <div class="invalid-feedback" th:errors="*{password}">Error</div>
         </div>
         <div class="form-group">
           <label for="firsNameInput">First name</label>
           <input type="text" class="form-control" id="firstNameInput"
+                 th:classappend="${#fields.hasErrors('firstName')} ? 'is-invalid'"
                  th:field="*{firstName}" placeholder="Enter first name"/>
+          <div class="invalid-feedback" th:errors="*{firstName}">Error</div>
         </div>
         <div class="form-group">
           <label for="lastNameInput">Last name</label>
           <input type="text" class="form-control" id="lastNameInput"
+                 th:classappend="${#fields.hasErrors('lastName')} ? 'is-invalid'"
                  th:field="*{lastName}" placeholder="Enter last name"/>
+          <div class="invalid-feedback" th:errors="*{lastName}">Error</div>
         </div>        
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
