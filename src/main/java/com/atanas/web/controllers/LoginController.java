@@ -15,6 +15,7 @@ public class LoginController
   {
     UserEntity userEntity = new UserEntity();
     model.addAttribute("user", userEntity);
+    model.addAttribute("globalMenu", "signup");
 
     return "login/signup";
   }
