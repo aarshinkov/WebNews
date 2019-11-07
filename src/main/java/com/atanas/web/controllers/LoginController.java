@@ -1,7 +1,9 @@
 package com.atanas.web.controllers;
 
 import com.atanas.web.entities.*;
+import com.atanas.web.services.*;
 import javax.validation.*;
+import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
 import org.springframework.ui.*;
 import org.springframework.validation.*;
@@ -10,6 +12,9 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class LoginController
 {
+  @Autowired
+  private UserService userService;
+  
   @GetMapping(value = "/signup")
   public String prepareSignup(Model model)
   {
@@ -29,12 +34,9 @@ public class LoginController
       model.addAttribute("globalMenu", "signup");
       return "login/signup";
     }
-
-    System.out.println(user.getEmail());
-    System.out.println(user.getUsername());
-    System.out.println(user.getPassword());
-    System.out.println(user.getFirstName());
-    System.out.println(user.getLastName());
+    
+    userService.saveUser(user);
+    
     return "redirect:/";
   }
 }

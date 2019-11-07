@@ -1,7 +1,6 @@
 package com.atanas.web.entities;
 
 import java.io.*;
-import java.sql.*;
 import java.util.*;
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -11,7 +10,7 @@ import javax.validation.constraints.*;
 public class UserEntity implements Serializable
 {
   @Id
-  @GeneratedValue
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "user_id")
   private Integer userId;
   
@@ -41,7 +40,7 @@ public class UserEntity implements Serializable
   private String lastName;
   
   @Column(name = "created_on")
-  private Timestamp createdOn;
+  private Date createdOn = new Date();
   
   @ManyToMany(fetch = FetchType.EAGER)
   @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "rolename"))
@@ -107,12 +106,12 @@ public class UserEntity implements Serializable
     this.lastName = lastName;
   }
 
-  public Timestamp getCreatedOn()
+  public Date getCreatedOn()
   {
     return createdOn;
   }
 
-  public void setCreatedOn(Timestamp createdOn)
+  public void setCreatedOn(Date createdOn)
   {
     this.createdOn = createdOn;
   }
