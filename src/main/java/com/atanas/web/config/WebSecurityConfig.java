@@ -17,8 +17,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
             .antMatchers("/loops").anonymous()
             .and()
             .formLogin()
+            .loginPage("/login")
+            .usernameParameter("username")
+            .passwordParameter("password")
             .and()
-            .logout();
+            .logout()
+            .logoutSuccessUrl("/login")
+            .invalidateHttpSession(true)
+            .deleteCookies("JSESSIONID")
+            .and()
+            .httpBasic();
   }
 
   @Override

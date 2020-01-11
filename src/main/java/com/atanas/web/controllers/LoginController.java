@@ -14,7 +14,15 @@ public class LoginController
 {
   @Autowired
   private UserService userService;
-  
+
+  @GetMapping(value = "/login")
+  public String prepareLogin(Model model)
+  {
+    model.addAttribute("globalMenu", "login");
+
+    return "login/login";
+  }
+
   @GetMapping(value = "/signup")
   public String prepareSignup(Model model)
   {
@@ -34,9 +42,9 @@ public class LoginController
       model.addAttribute("globalMenu", "signup");
       return "login/signup";
     }
-    
+
     userService.saveUser(user);
-    
+
     return "redirect:/";
   }
 }
