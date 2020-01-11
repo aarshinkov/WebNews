@@ -13,9 +13,6 @@ public class HomeController
   @GetMapping(value = "/")
   public String home(Model model)
   {
-    log.debug("In home method");
-    log.error("Some error");
-
     model.addAttribute("globalMenu", "home");
 
     return "home";

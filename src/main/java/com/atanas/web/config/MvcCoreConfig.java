@@ -5,8 +5,9 @@ import org.springframework.web.servlet.config.annotation.*;
 
 @Configuration
 @EnableWebMvc
+@EnableAspectJAutoProxy
 @ComponentScan(basePackages = "com.atanas.web")
 public class MvcCoreConfig implements WebMvcConfigurer
 {
-  
+
 }
