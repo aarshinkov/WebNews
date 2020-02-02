@@ -7,6 +7,7 @@ import java.util.*;
 import javax.validation.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.http.*;
+import org.springframework.security.crypto.password.*;
 import org.springframework.stereotype.*;
 import org.springframework.ui.*;
 import org.springframework.validation.*;
@@ -17,6 +18,9 @@ public class TestController
 {
   @Autowired
   private UsersRepository usersRepository;
+
+  @Autowired
+  private PasswordEncoder passwordEncoder;
 
   @GetMapping(value = "/testModel")
   public String testModel(Model model)
@@ -148,5 +152,12 @@ public class TestController
   public String templateTest()
   {
     return "test/templateTest";
+  }
+
+  @GetMapping(value = "/test/encode/{password}", produces = MediaType.APPLICATION_JSON_VALUE)
+  @ResponseBody
+  public String encodePassword(@PathVariable("password") String password)
+  {
+    return passwordEncoder.encode(password);
   }
 }
