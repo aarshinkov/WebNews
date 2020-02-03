@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.*;
 import org.springframework.security.core.*;
 import org.springframework.security.core.authority.*;
 import org.springframework.security.core.userdetails.*;
+import org.springframework.security.crypto.password.*;
 import org.springframework.stereotype.*;
 
 @Service
@@ -15,9 +16,25 @@ public class UserServiceImpl implements UserService
   @Autowired
   private UsersRepository usersRepository;
 
+  @Autowired
+  private RolesRepository rolesRepository;
+
+  @Autowired
+  private PasswordEncoder passwordEncoder;
+
   @Override
   public void saveUser(UserEntity user)
   {
+    user.setPassword(passwordEncoder.encode(user.getPassword()));
+
+    List<RoleEntity> roles = new ArrayList();
+
+    RoleEntity role = rolesRepository.findByRolename("USER");
+
+    roles.add(role);
+
+    user.setRoles(roles);
+
     usersRepository.save(user);
   }
 
